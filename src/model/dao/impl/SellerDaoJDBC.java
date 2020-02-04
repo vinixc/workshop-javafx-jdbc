@@ -222,7 +222,7 @@ public class SellerDaoJDBC implements SellerDao{
 	}
 
 	private Seller instantiateSeller(ResultSet rs , Department dep) throws SQLException {
-		return new Seller(rs.getInt("Id"), rs.getString("name"), rs.getString("email"), rs.getDate("BirthDate"), rs.getDouble("BaseSalary"),
+		return new Seller(rs.getInt("Id"), rs.getString("name"), rs.getString("email"), new java.util.Date(rs.getDate("BirthDate").getTime()), rs.getDouble("BaseSalary"),
 				dep != null ? dep : new Department(rs.getInt("DepartmentId"), rs.getString("DepName")));
 	}
 }
